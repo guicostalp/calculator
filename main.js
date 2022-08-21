@@ -9,15 +9,50 @@ function start () {
 
 }
 
+function reset(){
+    document.querySelector(".display").textContent = "0";
+    number1 = 0;
+    number2 = 0;
+}
+
+function displayButtons() {
+    let buttons = document.querySelectorAll('.number')
+        buttons.forEach((button) => 
+            button.addEventListener("click", () => {
+                
+                console.log(button.textContent)
+                const text = button.textContent
+                const textDisp = document.querySelector(".display").textContent
+                if (textDisp === "0" ){
+                    document.querySelector(".display").textContent = 
+                    `${text}`
+
+                } else { 
+
+                document.querySelector(".display").textContent = 
+                    `${document.querySelector(".display").textContent}${text}`
+                }
+                
+            })
+        )
+
+
+}
+
+
 function getOperation (){
 
     let sumButton = document.querySelector('.sum')
         sumButton.addEventListener("click", () => {
         
         number1 = document.querySelector(".display").textContent;
-        document.querySelector(".display").textContent = "";
+        document.querySelector(".display").textContent = "0";
 
+        number1 = sum(number1,number2);
+        console.log(sum(number1,number2))
+     
         operation = "sum"
+        
 
     }) 
 
@@ -25,7 +60,7 @@ function getOperation (){
         subtractButton.addEventListener("click", () => {
             
             number1 = document.querySelector(".display").textContent;
-            document.querySelector(".display").textContent = "";
+            document.querySelector(".display").textContent = "0";
 
             operation = "subtract"
 
@@ -35,7 +70,7 @@ function getOperation (){
         multiplyButton.addEventListener("click", () => {
             
             number1 = document.querySelector(".display").textContent;
-            document.querySelector(".display").textContent = "";
+            document.querySelector(".display").textContent = "0";
 
             operation = "multiply"
 
@@ -45,7 +80,7 @@ function getOperation (){
         divideButton.addEventListener("click", () => {
             
             number1 = document.querySelector(".display").textContent;
-            document.querySelector(".display").textContent = "";
+            document.querySelector(".display").textContent = "0";
 
             operation = "divide"
 
@@ -53,26 +88,6 @@ function getOperation (){
 
 }
 
-function displayButtons() {
-    let buttons = document.querySelectorAll('.number')
-        buttons.forEach((button) => 
-            button.addEventListener("click", () => {
-                
-                const text = button.textContent
-                document.querySelector(".display").textContent = 
-                    `${document.querySelector(".display").textContent}${text}`
-                
-            })
-        )
-
-
-}
-
-function reset(){
-    document.querySelector(".display").textContent = "";
-    number1 = 0;
-    number2 = 0;
-}
 
 
 function operate (number1, number2, operation) {
@@ -103,9 +118,11 @@ function operate (number1, number2, operation) {
 
 
 function sum(number1, number2) {
-    const newNumber = number1 + number2
+    const newNumber = parseInt(number1, 10) + parseInt(number2, 10)
 
-    console.log(newNumber);    
+    console.log(newNumber);
+    
+    number1 = newNumber;
 
     return newNumber;
 
@@ -117,12 +134,15 @@ function sum(number1, number2) {
 function subtract(number1, number2) {
     const newNumber = number1 - number2
     console.log(newNumber);
+    number1 = newNumber;
     return newNumber;
 
 }
 
 function multiply(number1, number2) {
     const newNumber = number1 * number2
+    console.log(newNumber);
+    number1 = newNumber;
 
     return newNumber;
 
@@ -130,6 +150,8 @@ function multiply(number1, number2) {
 
 function divide(number1, number2) {
     const newNumber = number1 / number2
+    console.log(newNumber);
+    number1 = newNumber;
 
     return newNumber;
 
