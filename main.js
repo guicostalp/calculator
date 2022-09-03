@@ -1,6 +1,8 @@
-number1 = 0;
-number2 = 0;
-operation = ""
+number1 = null;
+number2 = null;
+result = 0;
+operation = "";
+record = null;
 
 function start () {
     displayButtons();
@@ -11,8 +13,11 @@ function start () {
 
 function reset(){
     document.querySelector(".display").textContent = "0";
-    number1 = 0;
-    number2 = 0;
+    number1 = null;
+    number2 = null;
+    result = 0;
+    operation = "";
+    record = null;
 }
 
 function displayButtons() {
@@ -42,14 +47,16 @@ function displayButtons() {
 
 function getOperation (){
 
+    
+
     let sumButton = document.querySelector('.sum')
         sumButton.addEventListener("click", () => {
         
         number1 = document.querySelector(".display").textContent;
         document.querySelector(".display").textContent = "0";
 
-        number1 = sum(number1,number2);
-        console.log(sum(number1,number2))
+    
+        console.log(result)
      
         operation = "sum"
         
@@ -85,6 +92,8 @@ function getOperation (){
             operation = "divide"
 
         }) 
+
+    
 
 }
 
@@ -122,7 +131,7 @@ function sum(number1, number2) {
 
     console.log(newNumber);
     
-    number1 = newNumber;
+    result = newNumber;
 
     return newNumber;
 
@@ -134,7 +143,7 @@ function sum(number1, number2) {
 function subtract(number1, number2) {
     const newNumber = number1 - number2
     console.log(newNumber);
-    number1 = newNumber;
+    result = newNumber;
     return newNumber;
 
 }
@@ -142,7 +151,7 @@ function subtract(number1, number2) {
 function multiply(number1, number2) {
     const newNumber = number1 * number2
     console.log(newNumber);
-    number1 = newNumber;
+    result = newNumber;
 
     return newNumber;
 
@@ -151,7 +160,7 @@ function multiply(number1, number2) {
 function divide(number1, number2) {
     const newNumber = number1 / number2
     console.log(newNumber);
-    number1 = newNumber;
+    result = newNumber;
 
     return newNumber;
 
